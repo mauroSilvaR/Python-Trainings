@@ -1,20 +1,20 @@
-<gui>
-    <title>Demo nights!</title>
-    <bgcolor>#4CAF50</bgcolor>
-    
-    <label 
-        text="Loaded from XML!" 
-        row="1"
-        column="2"
-    />
+<config>
     <colors>
-            <primary>#E6F7FF</primary>
-            <alert>#FF4C4C</alert>
-            <success>#4CAF50</success>
-            <neutral>#F0F0F0</neutral>
-            <background>#FFFFFF</background>
-            <text>#333333</text>
+        <color name="primary">#E6F7FF</color>
+        <color name="alert">#FF4C4C</color>
+        <color name="success">#4CAF50</color>
+        <color name="neutral">#F0F0F0</color>
+        <color name="background">#FFFFFF</color>
+        <color name="text">#333333</color>
     </colors>
-</gui>
 
+    <gui>
+        <title>Demo nights!</title>
+        <bgcolor>success</bgcolor>
+        <label 
+            text="Loaded from XML!" 
+            row="1" 
+            column="2" />
+    </gui>
+</config>
 

@@ -3,29 +3,38 @@ import xml.etree.ElementTree as ET
 class GuiConfigParser:
     def __init__(self, file_path="config.xml"):
         self.file_path = file_path
-        self.color_map = {
-            "primary": "#E6F7FF",
-            "alert": "#FF4C4C",
-            "success": "#4CAF50",
-            "neutral": "#F0F0F0",
-            "background": "#FFFFFF",
-            "text": "#333333"
-        }
         self.tree = None
         self.root = None
+        self.color_map = {}  # will now come from XML
         self.config = {}
 
     def load(self):
         self.tree = ET.parse(self.file_path)
         self.root = self.tree.getroot()
+        self._parse_colors()
         self._parse_gui()
 
-    def _parse_gui(self):
-        title = self.root.find("title").text
-        bgcolor_key = self.root.find("bgcolor").text
-        bgcolor = self.color_map.get(bgcolor_key, bgcolor_key)
+    def _parse_colors(self):
+        for color in self.root.find("colors"):
+            name = color.attrib.get("name")
+            value = color.text.strip()
+            if name:
+                self.color_map[name] = value
 
-        label_node = self.root.find("label")
+    def _parse_gui(self):
+        gui = self.root.find("gui")
+
+        title = gui.find("title").text
+        bgcolor_key = gui.find("bgcolor").text.strip()
+
+        if bgcolor_key.startswith("#"):
+            bgcolor = bgcolor_key  # raw hex
+        else:
+            bgcolor = self.color_map.get(bgcolor_key)
+            if not bgcolor:
+                raise ValueError(f"Color '{bgcolor_key}' not defined in <colors>")
+
+        label_node = gui.find("label")
         label_text = label_node.attrib.get("text", "Default Label")
         row = int(label_node.attrib.get("row", 0))
         col = int(label_node.attrib.get("column", 0))
@@ -39,6 +48,3 @@ class GuiConfigParser:
 
     def get_config(self):
         return self.config
-
-    def greet(self):
-        print("Hello Venus!\n")
