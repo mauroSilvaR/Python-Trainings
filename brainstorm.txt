@@ -1,0 +1,7 @@
+We can start to think about what does a GUI needs to do as a class.
+Some commom GUI attributtes are:
+1)window name
+2) Background color
+3) label text
+4) label position
+
