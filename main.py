@@ -1,15 +1,18 @@
+from logic import GuiConfigParser
 from gui import GuiApp
 
 def main():
+    parser = GuiConfigParser("config.xml")
+    parser.load()
+    config = parser.get_config()
+
     app = GuiApp(
-        window_name="My XML-Based GUI",
-        bg_color="#E6F7FF",
-        label_text="Loaded from XML!",
-        label_position=(1, 2)
+        window_name=config["title"],
+        bg_color=config["bgcolor"],
+        label_text=config["label_text"],
+        label_position=config["label_position"]
     )
     app.launch()
-    app.greet()
-    
 
 if __name__ == "__main__":
     main()
