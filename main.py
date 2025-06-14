@@ -1,12 +1,15 @@
-from logic import greet as logic_greet
-from gui import greet as gui_greet
-from gui import launch_gui
+from gui import GuiApp
 
 def main():
-    print("Hello earth!\n")
-    logic_greet()
-    gui_greet()
-    launch_gui("#A0D8EF")
+    app = GuiApp(
+        window_name="My XML-Based GUI",
+        bg_color="#E6F7FF",
+        label_text="Loaded from XML!",
+        label_position=(1, 2)
+    )
+    app.launch()
+    app.greet()
+    
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()
