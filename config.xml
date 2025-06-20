@@ -1,20 +1,19 @@
 <config>
     <colors>
-        <color name="primary">#E6F7FF</color>
-        <color name="alert">#FF4C4C</color>
-        <color name="success">#4CAF50</color>
-        <color name="neutral">#F0F0F0</color>
-        <color name="background">#FFFFFF</color>
-        <color name="text">#333333</color>
+        <color name="primary"    value="#E6F7FF"/>
+        <color name="alert"      value="#FF4C4C"/>
+        <color name="success"    value="#4CAF50"/>
+        <color name="neutral"    value="#F0F0F0"/>
+        <color name="background" value="#FFFFFF"/>
+        <color name="text"       value="#333333"/>
     </colors>
 
     <gui>
-        <title>Demo nights!</title>
-        <bgcolor>success</bgcolor>
+        <title>A proof of concept!</title>
+        <bgcolor>text</bgcolor>
         <label 
             text="Loaded from XML!" 
-            row="1" 
-            column="2" />
+            row="4" 
+            column="5" />
     </gui>
 </config>
-
