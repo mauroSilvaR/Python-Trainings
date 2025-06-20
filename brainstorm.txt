@@ -5,3 +5,5 @@ Some commom GUI attributtes are:
 3) label text
 4) label position
 
+now we can also think about how to manage some widgets position on screen
+
